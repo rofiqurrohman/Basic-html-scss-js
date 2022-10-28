@@ -1,0 +1,234 @@
+$body-color: rgb(200, 199, 199);
+$primary-color: #082032;
+$secondary-color: #9ea1a4;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $body-color;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.box {
+  background: $primary-color;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-gap: 1rem;
+  min-height: 90vh;
+
+  &_left {
+    // background: rgb(247, 139, 139);
+    padding: 50px;
+
+    .name {
+      font-size: 28px;
+      display: block;
+      font-weight: 700;
+    }
+
+    .desc {
+      font-size: 16px;
+      color: $secondary-color;
+    }
+
+    input.search {
+      border-radius: 10px;
+      width: 100%;
+      padding: 10px;
+      background-color: #374148;
+      color: white;
+      margin: 20px 0;
+      border: 0;
+
+      &::placeholder {
+        color: white;
+      }
+    }
+
+    .project {
+      .title {
+        font-size: 16px;
+      }
+
+      .list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 20px 0;
+
+        .item {
+          text-align: center;
+
+          &_card {
+            height: 70px;
+            width: 70px;
+            background-color: rgb(45, 188, 228);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+          }
+
+          &_title {
+            font-size: 12px;
+            margin-top: 10px;
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+
+  &_right {
+    background: white;
+    border-radius: inherit;
+    padding: 50px;
+    position: relative;
+
+    .content {
+      margin-bottom: 100px;
+
+      .text {
+        .title {
+          color: black;
+          display: block;
+          font-size: 20px;
+          font-weight: 700;
+        }
+
+        .subtitle {
+          color: $secondary-color;
+        }
+      }
+
+      .task {
+        margin-top: 20px;
+
+        .title {
+          color: black;
+          font-weight: 700;
+        }
+
+        &_list {
+          list-style-type: none;
+          // background-color: red;
+          padding: 0;
+
+          &>*+* {
+            margin-top: 15px;
+          }
+
+          &_item {
+            color: black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .check_item {
+              display: flex;
+              align-items: center;
+
+              .round {
+                position: relative;
+
+                label {
+                  background-color: #fff;
+                  border: 1px solid #ccc;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  height: 20px;
+                  width: 20px;
+                  left: 0;
+                  position: absolute;
+                  top: 0;
+
+                  &::after {
+                    border: 2px solid #fff;
+                    border-top: none;
+                    border-right: none;
+                    content: "";
+                    height: 3px;
+                    left: 4px;
+                    opacity: 0;
+                    position: absolute;
+                    top: 6px;
+                    transform: rotate(-45deg);
+                    width: 8px;
+                  }
+                }
+
+                input[type="checkbox"] {
+                  visibility: hidden;
+
+                  &:checked+label {
+                    background-color: #66bb6a;
+                    border-color: #66bb6a;
+                  }
+
+                  &:checked+label::after {
+                    opacity: 1;
+                  }
+                }
+              }
+
+              &_title {
+                font-size: 16px;
+                margin-left: 10px;
+                color: rgb(87, 84, 84);
+              }
+            }
+
+            .label {
+              background: rgb(148, 238, 208);
+              color: rgb(21, 135, 97);
+              border-radius: 15px;
+              padding: 3px 15px;
+              display: inline-block;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    .fab {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+
+      &_button {
+        background: rgb(185, 40, 237);
+        height: 40px;
+        width: 40px;
+        color: white;
+        font-size: 30px;
+        border-radius: 10px;
+        border: 0;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 70%;
+  }
+
+  .box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .box-right .content {
+    margin-bottom: 0;
+  }
+}
